@@ -1,0 +1,29 @@
+# Loaded via: parameter_bridge --ros-args -p config_file:=<this file>
+
+# 1. Sim clock — REQUIRED for use_sim_time to work anywhere in the stack
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# 2. 3D Lidar Pointcloud (Feeds into your pointcloud_to_laserscan_node)
+- ros_topic_name: "/livox"  
+  gz_topic_name: "/livox"    
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# 3. IMU (Feeds into your ekf_filter_node_odom)
+- ros_topic_name: "/imu"
+  gz_topic_name: "/imu"      # Make sure your URDF IMU <sensor> has <topic>/imu</topic>
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_type_name: "gz.msgs.IMU"
+  direction: GZ_TO_ROS
+
+# 4. Ground Truth Odometry (Optional: For debugging the EKF)
+- ros_topic_name: "/ground_truth/odom"
+  gz_topic_name: "/model/my_robot/odometry" # Standard Gazebo path for the spawned robot
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS

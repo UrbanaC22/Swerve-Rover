@@ -1,0 +1,30 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    swerve_steering_controller:
+      type: "position_controllers/JointGroupPositionController"
+    swerve_velocity_controller:
+      type: "velocity_controllers/JointGroupVelocityController"
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+swerve_steering_controller:
+  ros__parameters:
+    joints:
+      - FL_mount_joint
+      - FR_mount_joint
+      - BL_mount_joint
+      - BR_mount_joint
+    
+    
+swerve_velocity_controller:
+  ros__parameters:
+    joints:
+      - FL_wheel_joint
+      - FR_wheel_joint
+      - BL_wheel_joint
+      - BR_wheel_joint
+     
+   
