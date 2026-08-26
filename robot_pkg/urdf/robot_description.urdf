@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="robot_pkg">
+
+  <link name="base_footprint"/>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0425846243209965 -2.47539319042534E-06 0.0343411364228394"
+        rpy="0 0 0" />
+      <mass
+        value="3.28881705164235" />
+      <inertia
+        ixx="0.0801348289681297"
+        ixy="1.53883455963464E-06"
+        ixz="0.00598631002688133"
+        iyy="0.153009273635093"
+        iyz="-9.23294996491064E-08"
+        izz="0.22692883677298" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <!-- Elevates base_link 3cm above the footprint -->
+    <origin xyz="0 0 0.317" rpy="0 0 0"/> 
+  </joint>
+
+
+  <link
+    name="left_suspension_link">
+    <inertial>
+      <origin
+        xyz="5.54822917437478E-16 -0.0099999999999999 -0.0694587181319961"
+        rpy="0 0 0" />
+      <mass
+        value="1.06265478187723" />
+      <inertia
+        ixx="0.00062527380023011"
+        ixy="-3.24760076195485E-18"
+        ixz="1.03706541173892E-17"
+        iyy="0.114077452687201"
+        iyz="-4.63540498214204E-19"
+        izz="0.113772909777021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/left_suspension_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/left_suspension_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_suspension_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0735645089533979 0.302 0.045"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_suspension_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.26"
+      upper="0.26"
+      effort="250.0"
+      velocity="2.0" />
+    <dynamics damping="50.0" friction="1.0"/>
+  </joint>
+
+
+  <link
+    name="FL_mount_link">
+    <inertial>
+      <origin
+        xyz="-1.19099341500117E-10 0.0718161039332217 -0.105477117572239"
+        rpy="0 0 0" />
+      <mass
+        value="1.45339450705136" />
+      <inertia
+        ixx="0.00590763326193611"
+        ixy="-1.15966243385262E-12"
+        ixz="1.92841485655359E-11"
+        iyy="0.00567865668492067"
+        iyz="0.00155408976110303"
+        izz="0.00220259848128511" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FL_mount_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FL_mount_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_mount_joint"
+    type="revolute">
+    <origin
+      xyz="0.445 -0.00999999999999995 -0.100434071104698"
+      rpy="0 0 0" />
+    <parent
+      link="left_suspension_link" />
+    <child
+      link="FL_mount_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="15.0"
+      velocity="2.0" />
+  </joint>
+
+
+  <link
+    name="FL_wheel_link">
+    <inertial>
+      <origin
+        xyz="2.22044604925031E-16 -0.076796461579196 -3.19189119579733E-16"
+        rpy="0 0 0" />
+      <mass
+        value="3.04031822118871" />
+      <inertia
+        ixx="0.0129613644614321"
+        ixy="-2.08515445176801E-17"
+        ixz="-5.59904486355141E-18"
+        iyy="0.0185626847521411"
+        iyz="1.8983235568989E-17"
+        izz="0.0129613644614321" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FL_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FL_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0770000000000005 -0.135551362635287"
+      rpy="0 0 0" />
+    <parent
+      link="FL_mount_link" />
+    <child
+      link="FL_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="25.0"
+      velocity="10.0" />
+  </joint>
+
+  
+  <link
+    name="BL_mount_link">
+    <inertial>
+      <origin
+        xyz="-1.19098730877454E-10 0.0718161039332215 -0.10547711757224"
+        rpy="0 0 0" />
+      <mass
+        value="1.45339450705137" />
+      <inertia
+        ixx="0.0059076332619361"
+        ixy="-1.15966515598164E-12"
+        ixz="1.92841584208355E-11"
+        iyy="0.00567865668492066"
+        iyz="0.00155408976110301"
+        izz="0.0022025984812851" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BL_mount_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BL_mount_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_mount_joint"
+    type="revolute">
+    <origin
+      xyz="-0.445 -0.00999999999999995 -0.100434071104698"
+      rpy="0 0 0" />
+    <parent
+      link="left_suspension_link" />
+    <child
+      link="BL_mount_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="15.0"
+      velocity="2.0" />
+  </joint>
+
+
+  <link
+    name="BL_wheel_link">
+    <inertial>
+      <origin
+        xyz="-2.22044604925031E-16 -0.076796461579196 -3.05311331771918E-16"
+        rpy="0 0 0" />
+      <mass
+        value="3.04031822118871" />
+      <inertia
+        ixx="0.0129613644614321"
+        ixy="2.00359434467741E-17"
+        ixz="-6.26401561445551E-18"
+        iyy="0.0185626847521411"
+        iyz="1.96638798908523E-17"
+        izz="0.0129613644614321" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BL_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BL_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0770000000000001 -0.135551362635287"
+      rpy="0 0 0" />
+    <parent
+      link="BL_mount_link" />
+    <child
+      link="BL_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="25.0"
+      velocity="10.0" />
+  </joint>
+
+
+  <link
+    name="right_suspension_link">
+    <inertial>
+      <origin
+        xyz="-5.75141269841096E-16 0.0099999999999999 -0.0694587181319961"
+        rpy="0 0 0" />
+      <mass
+        value="1.06265478187723" />
+      <inertia
+        ixx="0.000625273800230108"
+        ixy="-3.24678730201199E-18"
+        ixz="-1.11324422929011E-17"
+        iyy="0.114077452687201"
+        iyz="4.80110148330914E-19"
+        izz="0.113772909777021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/right_suspension_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/right_suspension_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_suspension_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0735645089533979 -0.302 0.045"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_suspension_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.26"
+      upper="0.26"
+      effort="250.0"
+      velocity="2.0"/>
+    <dynamics damping="50.0" friction="1.0"/>
+  </joint>
+
+
+  <link
+    name="FR_mount_link">
+    <inertial>
+      <origin
+        xyz="1.19098786388605E-10 -0.0718161039332219 -0.105477117572239"
+        rpy="0 0 0" />
+      <mass
+        value="1.45339450705137" />
+      <inertia
+        ixx="0.0059076332619361"
+        ixy="-1.15966503998925E-12"
+        ixz="-1.92841577462866E-11"
+        iyy="0.00567865668492066"
+        iyz="-0.00155408976110302"
+        izz="0.0022025984812851" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FR_mount_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FR_mount_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_mount_joint"
+    type="revolute">
+    <origin
+      xyz="0.445 0.00999999999999995 -0.100434071104698"
+      rpy="0 0 0" />
+    <parent
+      link="right_suspension_link" />
+    <child
+      link="FR_mount_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="15.0"
+      velocity="2.0" />
+  </joint>
+
+
+  <link
+    name="FR_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.11022302462516E-16 0.076796461579196 -2.77555756156289E-16"
+        rpy="0 0 0" />
+      <mass
+        value="3.04031822118871" />
+      <inertia
+        ixx="0.0129613644614321"
+        ixy="1.81197352548942E-17"
+        ixz="-1.61465655570351E-18"
+        iyy="0.0185626847521411"
+        iyz="-1.92923072004548E-17"
+        izz="0.0129613644614321" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FR_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/FR_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0770000000000005 -0.135551362635287"
+      rpy="0 0 0" />
+    <parent
+      link="FR_mount_link" />
+    <child
+      link="FR_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="25.0"
+      velocity="10.0" />
+  </joint>
+
+
+  <link
+    name="BR_mount_link">
+    <inertial>
+      <origin
+        xyz="1.19099341500117E-10 -0.0718161039332206 -0.10547711757224"
+        rpy="0 0 0" />
+      <mass
+        value="1.45339450705137" />
+      <inertia
+        ixx="0.0059076332619361"
+        ixy="-1.15966173901434E-12"
+        ixz="-1.92841484150386E-11"
+        iyy="0.00567865668492069"
+        iyz="-0.00155408976110299"
+        izz="0.00220259848128507" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BR_mount_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BR_mount_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_mount_joint"
+    type="revolute">
+    <origin
+      xyz="-0.445 0.00999999999999995 -0.100434071104698"
+      rpy="0 0 0" />
+    <parent
+      link="right_suspension_link" />
+    <child
+      link="BR_mount_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="15.0"
+      velocity="2.0" />
+  </joint>
+
+
+  <link
+    name="BR_wheel_link">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-16 0.076796461579196 -2.63677968348475E-16"
+        rpy="0 0 0" />
+      <mass
+        value="3.04031822118871" />
+      <inertia
+        ixx="0.0129613644614321"
+        ixy="-2.07755038996784E-17"
+        ixz="-4.99793957194217E-18"
+        iyy="0.0185626847521411"
+        iyz="-1.9962408005107E-17"
+        izz="0.0129613644614321" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BR_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_pkg/meshes/BR_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.076999999999999 -0.135551362635288"
+      rpy="0 0 0" />
+    <parent
+      link="BR_mount_link" />
+    <child
+      link="BR_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="25.0"
+      velocity="10.0" />
+  </joint>
+
+
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="4.6e-05" iyy="4.6e-05" izz="8.5e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.045"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0.0 0.0 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.045"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="0.145 0.0 0.045" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+  </joint>
+
+  <link name="imu_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="6.67e-06" ixy="0.0" ixz="0.0" iyy="6.67e-06" iyz="0.0" izz="6.67e-06"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.01"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.07 0.0 0.03" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+  <gazebo reference="lidar_link">
+    <sensor type="gpu_lidar" name="livox_lidar">
+      <gz_frame_id>lidar_link</gz_frame_id>
+      <frame_id>lidar_link</frame_id>
+      <update_rate>10.0</update_rate>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <topic>/livox</topic>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-0.122173048</min_angle> <!---7 degrees -->
+            <max_angle>0.174533</max_angle>  <!-- 10degrees for now but livox mid360 is 52 degrees (0.907571 rad)-->
+          </vertical>
+        </scan>
+        <range>
+          <min>0.9</min>
+          <max>20.0</max>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>200</update_rate> <!-- updated to a high rate -->
+      <visualize>true</visualize>
+      <topic>/imu</topic>
+      <gz_frame_id>imu_link</gz_frame_id>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+
+  <ros2_control name="SwerveControl" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="FL_mount_joint">
+      <command_interface name="position">
+        <param name="min">-3.1416</param>
+        <param name="max">3.1416</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="FR_mount_joint">
+      <command_interface name="position">
+        <param name="min">-3.1416</param>
+        <param name="max">3.1416</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="BL_mount_joint">
+      <command_interface name="position">
+        <param name="min">-3.1416</param>
+        <param name="max">3.1416</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="BR_mount_joint">
+      <command_interface name="position">
+        <param name="min">-3.1416</param>
+        <param name="max">3.1416</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+
+    <joint name="FL_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10.0</param>
+        <param name="max">10.0</param>
+      </command_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="FR_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10.0</param>
+        <param name="max">10.0</param>
+      </command_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="BL_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10.0</param>
+        <param name="max">10.0</param>
+      </command_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="BR_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10.0</param>
+        <param name="max">10.0</param>
+      </command_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="left_suspension_joint">
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="right_suspension_joint">
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+  </ros2_control>
+  
+
+  <gazebo reference="FL_wheel_link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="FR_wheel_link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="BL_wheel_link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="BR_wheel_link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="left_suspension_joint">
+    <springStiffness>300.0</springStiffness>
+    <springReference>0.0</springReference>
+  </gazebo>
+  <gazebo reference="right_suspension_joint">
+    <springStiffness>300.0</springStiffness>
+    <springReference>0.0</springReference>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find robot_pkg)/config/controller.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+      <publish_link_pose>true</publish_link_pose>
+      <publish_sensor_pose>true</publish_sensor_pose>
+      <publish_collision_pose>false</publish_collision_pose>
+      <publish_visual_pose>false</publish_visual_pose>
+      <publish_model_pose>true</publish_model_pose>
+      <publish_nested_model_pose>true</publish_nested_model_pose>
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <static_publisher>true</static_publisher>
+      <static_update_frequency>1</static_update_frequency>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_topic>ground_truth</odom_topic>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <dimensions>3</dimensions>
+    </plugin>
+  </gazebo>
+
+</robot>
